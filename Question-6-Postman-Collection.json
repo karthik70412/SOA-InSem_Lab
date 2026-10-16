@@ -1,0 +1,124 @@
+{
+  "info": {
+    "name": "Question 6 - Order Validation Tests",
+    "description": "Postman collection covering all 5 test cases for API Request Validation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Test Case 1 - Valid Order (HTTP 200)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"John\",\n  \"productName\": \"Laptop\",\n  \"quantity\": 2,\n  \"price\": 50000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8083",
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "Test Case 2 - Missing Customer Name (HTTP 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"\",\n  \"productName\": \"Laptop\",\n  \"quantity\": 2,\n  \"price\": 50000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8083",
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "Test Case 3 - Invalid Quantity (HTTP 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"John\",\n  \"productName\": \"Laptop\",\n  \"quantity\": -2,\n  \"price\": 50000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8083",
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "Test Case 4 - Negative Price (HTTP 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"John\",\n  \"productName\": \"Laptop\",\n  \"quantity\": 2,\n  \"price\": -500\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8083",
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "Test Case 5 - Missing Product Name (HTTP 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"John\",\n  \"productName\": \"\",\n  \"quantity\": 2,\n  \"price\": 50000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8083",
+          "path": ["api", "orders"]
+        }
+      }
+    }
+  ]
+}
